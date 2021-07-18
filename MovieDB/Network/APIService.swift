@@ -10,10 +10,28 @@ import Foundation
 protocol APIServiceProtocol {
     func fetchMovies( complete: @escaping ([Result])->() )
 }
+enum Api:String {
+    case search = "search/"
+    case query = "top_rated?"
+    case baseUrl =  "https://api.themoviedb.org/3/movie/"
+    case apikey = "a29fc5ebb2985a80efeb821d7b5e187e"
+    case token = "7f0357a9985452405265e42e45b3280b"
+}
+
+
+enum queries : String {
+    case toprated =  "top_rated?"
+    case search = "query="
+    case getToken = "authentication/token/new?"
+    case createSession = "/authentication/session/new?"
+}
+
+
+
 
 class Service : APIServiceProtocol {
     func fetchMovies(complete: @escaping ([Result]) -> ()) {
-        let urlString = "https://api.themoviedb.org/3/movie/top_rated?api_key=a29fc5ebb2985a80efeb821d7b5e187e&language=en-US&page=20"
+        let urlString = "\(Api.baseUrl)movie/top_rated?api_key=a29fc5ebb2985a80efeb821d7b5e187e&language=en-US&page=20"
         guard let url = URL(string: urlString) else {
             return
         }

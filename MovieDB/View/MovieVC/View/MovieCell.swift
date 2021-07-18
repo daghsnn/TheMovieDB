@@ -10,7 +10,8 @@ import UIKit
 class MovieCell: UITableViewCell {
 
 
-    @IBOutlet weak var labell: UILabel!
+    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var dateLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -28,8 +28,7 @@ class MovieListViewModel {
     }
     func createCellViewModel( results: Result ) -> MovieCellViewModel {
 
-        
-        return MovieCellViewModel(name: results.originalTitle!, date: results.releaseDate!)
+        return MovieCellViewModel(name: results.originalTitle!, date: results.releaseDate!, posterURL: results.posterPath!, descript: results.overview!, adult: results.adult!, id: results.id!, voteAvr: results.voteAverage!, popularity: results.popularity!)
     }
     func getCellViewModel( at indexPath: IndexPath ) -> MovieCellViewModel {
         return moviecellView[indexPath.row]
@@ -62,6 +61,8 @@ class MovieListViewModel {
 
 
 struct MovieCellViewModel {
-    let name, date : String
-   
+    let name, date, posterURL, descript : String
+    let adult : Bool
+    let id : Int
+    let voteAvr , popularity : Double
 }
