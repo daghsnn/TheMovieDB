@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class DetailsView: UIView {
+final class DetailsView: UIView {
 
     var detailedMovie : MovieCellViewModel?
 

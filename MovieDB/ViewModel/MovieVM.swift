@@ -26,9 +26,14 @@ class MovieListViewModel {
             print(self.moviecellView)
         }
     }
+    func searchMovies(name:String){
+        apiService.searchMovies(name: name) { (data) in
+            self.fillModel(movies: data)
+        }
+    }
     func createCellViewModel( results: Result ) -> MovieCellViewModel {
-
-        return MovieCellViewModel(name: results.originalTitle!, date: results.releaseDate!, posterURL: results.posterPath!, descript: results.overview!, adult: results.adult!, id: results.id!, voteAvr: results.voteAverage!, popularity: results.popularity!)
+        //searchbar hata gönderdiği için forcecast i kaldırdım
+        return MovieCellViewModel(name: results.originalTitle ?? "", date: results.releaseDate ?? "", posterURL: results.posterPath ?? "", descript: results.overview ?? "", adult: results.adult ?? false, id: results.id ?? 0, voteAvr: results.voteAverage ?? 0.0, popularity: results.popularity ?? 0.0)
     }
     func getCellViewModel( at indexPath: IndexPath ) -> MovieCellViewModel {
         return moviecellView[indexPath.row]

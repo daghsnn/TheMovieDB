@@ -8,14 +8,17 @@
 import Foundation
 
 struct sessionId : Codable {
-    var request_token:String
+    var request_token, session_id : String?
+    var request_success, session_success:Bool?
+
     
 }
 
 struct UserData {
     var username:String
     var password:String
-    var request_token: sessionId
+    var request_token: String
     var session_id:String
     var request_success, session_success:Bool
+
 }

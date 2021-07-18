@@ -7,40 +7,38 @@
 
 import UIKit
 
-class MovieVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+final class MovieVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    //    weak var  movieModel : [MovieVM] = []{
-//        didSet {
-//            DispatchQueue.main.async {
-//                self.tableView.reloadData()
-//            }
-//        }
-//    }
-    //
+
     lazy var viewModel : MovieListViewModel = {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
         return MovieListViewModel()
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        viewModel.fecthMovies()
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-        print(viewModel)
+        
         tableView.dataSource = self
         tableView.delegate = self
+        searchBar.delegate = self
+        viewModel.fecthMovies()
+        self.tableView.reloadData()
+        
         }
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-   
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+        
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
 
     // MARK: - Table view data source
 
@@ -56,6 +54,9 @@ class MovieVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         cell.dateLbl.text = String(viewModel.moviecellView[indexPath.row].date.prefix(4))
         return cell
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard!.instantiateViewController(withIdentifier: "detailsVC") as? DetailVC
@@ -65,6 +66,30 @@ class MovieVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
+    
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if let string = searchBar.text {
+            if string.isEmpty {
+                viewModel.fecthMovies()
+
+            }
+            else {
+                viewModel.searchMovies(name: searchBar.text!)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+           
+        }
+    }
+  
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.fecthMovies()
+        dismiss(animated: true, completion: nil)
+    }
+
    
 
 }

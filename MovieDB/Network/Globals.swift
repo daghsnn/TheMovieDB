@@ -9,3 +9,4 @@ import Foundation
 
 public var REQUEST_TOKEN : String = String()
 
+public var SESSION_ID : String = String()

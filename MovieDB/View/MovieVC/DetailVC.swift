@@ -7,7 +7,7 @@
 
 import UIKit
 import Kingfisher
-class DetailVC: UIViewController {
+final class DetailVC: UIViewController {
 
     @IBOutlet var detailsView: DetailsView!
     var detailedMovie : MovieCellViewModel! {
@@ -20,7 +20,6 @@ class DetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-//        setupViews()
         detailsView.detailedMovie = detailedMovie
 
     }

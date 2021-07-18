@@ -10,7 +10,7 @@
         <!--LoginVC-->
         <scene sceneID="leF-cd-LLw">
             <objects>
-                <viewController id="zho-F7-2jH" customClass="LoginVC" customModule="MovieDB" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="zho-F7-2jH" customClass="LoginVC" customModule="MovieDB" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4v3-WH-Rvd"/>
                         <viewControllerLayoutGuide type="bottom" id="ZsM-QK-z13"/>
@@ -43,7 +43,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="loginClicked:" destination="Hhe-cY-QTQ" eventType="touchUpInside" id="yT7-qd-Q4E"/>
+                                    <action selector="btnClicked:" destination="zho-F7-2jH" eventType="touchUpInside" id="Wj4-MX-gsV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UsB-vK-YaZ">
@@ -56,7 +56,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="loginSiteClicked:" destination="Hhe-cY-QTQ" eventType="touchUpInside" id="cqJ-0K-PME"/>
+                                    <action selector="otherBtnClicked:" destination="zho-F7-2jH" eventType="touchUpInside" id="gsv-NZ-s4P"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login With E-Mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUi-vD-dDn">
@@ -98,13 +98,15 @@
                             <outlet property="passworTxt" destination="3Nm-eW-a6z" id="brj-1t-k20"/>
                         </connections>
                     </view>
+                    <navigationItem key="navigationItem" id="lDR-Bz-jso"/>
                     <connections>
                         <outlet property="loginView" destination="Hhe-cY-QTQ" id="hyp-cY-Cw5"/>
+                        <segue destination="P6v-r8-I5f" kind="modal" identifier="toMovieVC" modalPresentationStyle="fullScreen" id="prG-ez-0jy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dvG-IS-Gwp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-533" y="62"/>
+            <point key="canvasLocation" x="-662" y="63"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="Iis-jh-2gS">
@@ -128,12 +130,12 @@
         <!--Search-->
         <scene sceneID="9DU-WV-q69">
             <objects>
-                <viewController id="ghQ-8g-CSr" customClass="MovieVC" customModule="MovieDB" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieVC" id="ghQ-8g-CSr" customClass="MovieVC" customModule="MovieDB" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="lZG-Dg-GsO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search Film Name" id="5X1-e6-rIh">
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search Film Name" showsSearchResultsButton="YES" id="5X1-e6-rIh">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
@@ -190,7 +192,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Item" id="jpa-6K-dfG"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchBar" destination="5X1-e6-rIh" id="xlx-xt-s6j"/>
+                        <outlet property="searchBar" destination="5X1-e6-rIh" id="x7x-ro-JI4"/>
                         <outlet property="tableView" destination="lZG-Dg-GsO" id="CfL-bf-HYO"/>
                         <segue destination="eKv-xp-UJ4" kind="show" id="V6d-IB-Dsx"/>
                     </connections>
@@ -369,8 +371,9 @@
         <!--Navigation Controller-->
         <scene sceneID="RYf-NH-fDq">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="P6v-r8-I5f" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navigationController" automaticallyAdjustsScrollViewInsets="NO" id="P6v-r8-I5f" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="fg6-wu-A4V"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zw3-wR-101">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -381,12 +384,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="eG7-hD-eeQ" kind="relationship" relationship="rootViewController" id="3de-Dj-hf2"/>
+                        <segue destination="eG7-hD-eeQ" kind="relationship" relationship="rootViewController" id="cWN-eh-NlA"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2CR-Pn-LIE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="155" y="62"/>
+            <point key="canvasLocation" x="214" y="63"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="HUy-4g-aSX">
@@ -409,7 +412,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u9h-oP-41V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1004" y="63"/>
+            <point key="canvasLocation" x="896" y="63"/>
         </scene>
     </scenes>
     <resources>
