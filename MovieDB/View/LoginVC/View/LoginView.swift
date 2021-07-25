@@ -9,7 +9,8 @@ import UIKit
 
 final class LoginView: UIView {
 
-    var authSession : sessionId?
+    var loginUser : accountModel?
+//    var loginApi : A
     @IBOutlet weak var otherBtn: UIButton!
     @IBOutlet weak var passworTxt: UITextField!
     @IBOutlet weak var emailTxt: UITextField!
@@ -78,9 +79,10 @@ private func createSession(token:String) {
 let task = session.dataTask(with: url as URL, completionHandler: {(data, response, error) in
     print(response)
     print(data)
-    let encoder = try? JSONDecoder().decode(sessionId.self, from: data!)
-    SESSION_ID = encoder!.session_id!
+    let encoder = try? JSONDecoder().decode(requestSession.self, from: data!)
+    SESSION_ID = encoder!.session_id
     print(SESSION_ID)
+    
 })
 
 task.resume()

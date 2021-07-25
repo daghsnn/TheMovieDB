@@ -23,7 +23,7 @@ class MovieListViewModel {
     func fecthMovies() {
         apiService.fetchMovies { (data) in
             self.fillModel(movies: data)
-            print(self.moviecellView)
+//            print(self.moviecellView)
         }
     }
     func searchMovies(name:String){

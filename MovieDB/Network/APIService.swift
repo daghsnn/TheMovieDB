@@ -22,6 +22,7 @@ enum Api:String {
 
 
 enum queries : String {
+    case account = "account?"
     case movie = "movie/"
     case toprated =  "top_rated?"
     case search = "search/"
@@ -34,6 +35,8 @@ enum queries : String {
 
 
 class Service : APIServiceProtocol {
+
+    
     func createRequestToken() {
         let urlString = "\(Api.baseUrl.rawValue)\(queries.getToken.rawValue)\(Api.apikey.rawValue)"
         guard let url = URL(string: urlString) else {
@@ -48,8 +51,8 @@ class Service : APIServiceProtocol {
                     print(error!)
                 }
                 else{
-                    let request = try! JSONDecoder().decode(sessionId.self, from: data!)
-                    REQUEST_TOKEN = request.request_token!
+                    let request = try! JSONDecoder().decode(requestToken.self, from: data!)
+                    REQUEST_TOKEN = request.request_token
                     print(REQUEST_TOKEN)
                 }
                 

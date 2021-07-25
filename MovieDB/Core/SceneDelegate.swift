@@ -11,29 +11,35 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     let service = Service()
-    var user : UserData?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
+//            if SESSION_ID != nil {
+//            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+//            let viewController = storyboard.instantiateViewController(withIdentifier: "MovieVC") as! MovieVC
+//                        window?.rootViewController = viewController
+//                        window?.makeKeyAndVisible()
+//                    }
+//            else{
+//                        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+//                        let viewController = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+//                        window?.rootViewController = viewController
+//                        window?.makeKeyAndVisible()
+//                    }
+            guard let _ = (scene as? UIWindowScene) else { return }
+
+             
+         }
 //        service.createRequestToken()
 //        user?.request_token = REQUEST_TOKEN
-//        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+//
 //        if user?.session_success == true {
-//            let viewController = storyboard.instantiateViewController(withIdentifier: "MovieVC") as! MovieVC
-//            window?.rootViewController = viewController
-//            window?.makeKeyAndVisible()
-//        }
-//        else{
-//            let viewController = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-//            window?.rootViewController = viewController
-//            window?.makeKeyAndVisible()
-//        }
+//
         
               
             
         
-        guard let _ = (scene as? UIWindowScene) else { return }
-    }
+    
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

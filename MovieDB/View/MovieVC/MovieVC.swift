@@ -12,7 +12,7 @@ final class MovieVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-
+    var loginedUser : accountModel?
     lazy var viewModel : MovieListViewModel = {
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -27,13 +27,20 @@ final class MovieVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         tableView.delegate = self
         searchBar.delegate = self
         viewModel.fecthMovies()
-        self.tableView.reloadData()
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
         
         }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        
+
         
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         tap.cancelsTouchesInView = false

@@ -7,18 +7,19 @@
 
 import Foundation
 
-struct sessionId : Codable {
-    var request_token, session_id : String?
-    var request_success, session_success:Bool?
 
-    
+struct requestToken : Codable {
+    var success:Bool
+    var request_token:String
+}
+struct requestSession : Codable {
+    var success:Bool
+    var session_id:String
 }
 
-struct UserData {
-    var username:String
-    var password:String
-    var request_token: String
-    var session_id:String
-    var request_success, session_success:Bool
-
+    
+struct accountModel : Codable {
+    let id: Int?
+    let includeAdult: Bool?
+    let username: String?
 }
