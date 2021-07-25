@@ -70,6 +70,7 @@ final class MovieVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         let detailRow = viewModel.getCellViewModel(at: indexPath)
         vc?.detailedMovie = detailRow
         
+        
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     

@@ -26,6 +26,16 @@ class MovieListViewModel {
 //            print(self.moviecellView)
         }
     }
+    func fecthFavories() {
+        apiService.fetchFavorite { (data) in
+            self.fillModel(movies: data)
+        }
+    }
+    func fetchWacht() {
+        apiService.fetchWatch { (data) in
+            self.fillModel(movies: data)
+        }
+    }
     func searchMovies(name:String){
         apiService.searchMovies(name: name) { (data) in
             self.fillModel(movies: data)
